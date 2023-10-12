@@ -1,0 +1,8 @@
+{
+  "mongodb_password": "<mongodb-password>",
+  "mongodb_uri": "<mongodb-connection-string>",
+  "mongodb_database": "<databas-ename>",
+  "telegram_bot_key": "<telegram-bot-key>",
+  "telegram_bot_test_key": "<telegram-bot-key>",
+  "super_user": 000000000
+}

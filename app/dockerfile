@@ -1,0 +1,15 @@
+FROM python:3.10.3
+
+WORKDIR /main
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY bot.py/ .
+COPY bothelper.py/ .
+COPY mongo.py/ .
+COPY details.json/ .
+EXPOSE 8090
+RUN ls
+ENTRYPOINT [ "python", "bot.py" ]

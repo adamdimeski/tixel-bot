@@ -1,0 +1,5 @@
+{
+  "mongodb_password": "<mongodb-password>",
+  "mongodb_uri": "<connection-string>",
+  "mongodb_database": "<database-name>"
+}

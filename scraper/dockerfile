@@ -1,0 +1,15 @@
+FROM python:3.10.3
+
+WORKDIR /main
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY tixelscraper/ .
+
+COPY run.py .
+COPY details.json .
+
+RUN ls
+ENTRYPOINT [ "python", "./run.py" ]

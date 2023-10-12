@@ -1,0 +1,6 @@
+scrapy==2.8
+pymongo==4.3.3
+flask
+Twisted==22.10.0
+python-telegram-bot
+docker

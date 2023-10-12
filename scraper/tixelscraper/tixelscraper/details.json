@@ -1,0 +1,7 @@
+{
+  "proxy_api_key": "<proxy-api-key>",
+  "proxy_meta": "<proxy-meta>",
+  "mongodb_password": "<mongodb-password>",
+  "mongodb_uri": "<connnection-string>",
+  "mongodb_database": "<database-name>"
+}

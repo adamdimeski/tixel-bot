@@ -1,0 +1,14 @@
+setup.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
+tixelscraper/__init__.py
+tixelscraper/details.json
+tixelscraper/items.py
+tixelscraper/middlewares.py
+tixelscraper/pipelines.py
+tixelscraper/settings.py
+tixelscraper/spiders/__init__.py
+tixelscraper/spiders/tixelticketlinks.py
