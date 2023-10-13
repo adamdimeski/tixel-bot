@@ -18,7 +18,7 @@ superUser = details['super_user']
 test = False
 
 
-mytoken = ""
+
 
 db = mongo.mongo()
 
@@ -60,15 +60,11 @@ def writeToUserData(id, payload: dict):
         userData[id] = payload
 
 
-def sendColdMessage(payload: str) -> list:
-    print("#######################")
-    # data = json.loads(payload)
+def sendColdMessage(payload: str, test) -> list:
     data = sorted(json.loads(payload),
                   key=lambda d: d['price'], reverse=True)[:5]
-    # figure out eventName
     print(len(data))
     if len(data) > 0:
-        print("%")
         eventName = data[0]['eventName']
         collection = db["orders"]
         orders = collection.find({'name': eventName})
@@ -97,14 +93,18 @@ def sendColdMessage(payload: str) -> list:
                         ticket['eventName'] + " \n\n Price: $" + \
                         str(ticket['price']) + \
                         " \n\n Link: " + ticket['url']
-                    asyncio.run(sendCold(int(id), resp))
+                    asyncio.run(sendCold(int(id), resp, test))
 
             print(notified)
             ticketcollection.update_one({"ticketID": ticket["ticketID"]}, {
                                         "$set": {"notified": notified}})
 
 
-async def sendCold(userId, msg):
+async def sendCold(userId, msg, test):
+    if test:
+        mytoken = details["telegram_bot_test_key"]
+    else:
+        mytoken = details["telegram_bot_key"]
     await telegram.Bot(mytoken).sendMessage(chat_id=userId, text=msg)
 
 
@@ -562,6 +562,22 @@ async def cancelOrderHandler(update: Update, context: ContextTypes.DEFAULT_TYPE)
     await update.message.reply_text(f'What is the url of the order you would like to cancel?')
     return URL
 
+
+# async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+#     keyboard = [
+#         [
+#             InlineKeyboardButton("Tracked Orders", callback_data="/orders"),
+#             InlineKeyboardButton("Get Event Tickets",
+#                                  callback_data="/tickets"),
+#         ],
+#         [
+#             InlineKeyboardButton("Track a new event", callback_data="/create"),
+#             InlineKeyboardButton("Cancel an order", callback_data="/cancel"),
+#         ],
+#     ]
+#     print(update.message.from_user.id)
+#     reply_markup = InlineKeyboardMarkup(keyboard)
+#     await update.message.reply_text(f'help screen', reply_markup=reply_markup)
 
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     resp = "Welcome to the tixel helper bot. I can help you find cheap tickets on tixel. \

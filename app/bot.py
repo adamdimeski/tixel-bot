@@ -21,11 +21,14 @@ port = 8090
 app = Flask(__name__)
 
 
+
+
 @app.route("/ticketEvent", methods=['POST'])
-def event_func():
+def eventFunc():
+    print("Inside cold message function")
     request_data = request.data
     try:
-        bot.sendColdMessage(request_data)
+        bot.sendColdMessage(request_data, test)
         return "succeeded"
     except:
         return "failed"
