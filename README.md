@@ -8,6 +8,8 @@ See more information in this blog post [coming soon]()
 - A mongodb database
 - ScrapeOps proxy
 - Telegram account with a bot account (Bot accounts can be created using the telegram botfather)
+- Basic knowledge of docker [Basic Guide](https://docker-curriculum.com/)
+- Basic knowledge of python telegram bots [Useful Tutorials](https://www.toptal.com/python/telegram-bot-tutorial-python)
 
 ## Running this bot
 
